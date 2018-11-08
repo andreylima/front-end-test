@@ -59,7 +59,7 @@ h3
     left: 0;
     height: 20px;
     width: 20px;
-    background-color: #eee;
+    background-color: #fff;
     border-radius: 50%;
     border: solid 1px #e9e7e5;
 }
@@ -112,15 +112,119 @@ h3
 	color: #e85657;
 	font-size: 16px;
 }
+.checkoutInfoWrapper
+{
+	margin-top: 30px;
+	padding-bottom: 30px;
+	border-bottom: solid 1px #f5f3f1;
+}
 .checkoutInfoWrapper .item
 {
 	overflow: hidden;
+	margin-top: 30px;
 }
 .checkoutInfoWrapper .item .itemName
 {
 	float: left;
 	font-family: Montserrat;
 	font-weight: 400;
+	color: #5b5855;
+	font-size: 16px;
+}
+.checkoutInfoWrapper .item .value
+{
+	float: right;
+	font-family: Montserrat;
+	font-weight: 400;
+	color: #5b5855;
+	font-size: 16px;	
+}
+.checkoutInfoWrapper .item .cupomValue.hasCupom
+{
+	color: #f77274;
+}
+.buttonsWrapper
+{
+	overflow: hidden;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.buttonsWrapper .btn
+{
+	height: 50px;
+	width: 49%;
+	display:  block;
+	float: left;
+	border-radius: 7px;
+	border: none;
+	font-family: Montserrat;
+	font-weight: 500;
 	color: #e85657;
 	font-size: 16px;
+}
+.buttonsWrapper .cancelarBtn
+{
+	margin-right: 2%;
+	background-color: #fff;
+	border: solid 1px #f5f3f1;
+	color: #f77274;
+}
+.buttonsWrapper .confirmarBtn
+{
+	background-color: #f77274;
+	color: #fff;
+}
+.modal
+{
+	width: 90%;
+    border-radius: 7px;
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    margin-left: -45%;
+    top: 40vh;
+    height: 180px;
+    display: none;
+    padding: 20px 40px;
+	text-align: center;
+}
+.modal.show
+{
+	display: block;
+}
+.modal img
+{
+	height: 25px;
+	display: block;
+	margin: auto;
+}
+.modal span
+{
+	font-size: 18px;
+	font-family: Montserrat;
+	font-weight: 500;
+	color: #5b5855;
+	text-align: center;
+	display: block;
+	margin-top: 25px;
+}
+.modal p
+{
+	font-size: 14px;
+	font-family: Montserrat;
+	font-weight: 500;
+	color: #7d7a77;
+	margin-top: 20px;
+	display: block;
+}
+.screenLocker
+{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+    background-color: #000000c2;
+    z-index: 2;
+	top: 0;
+	left: 0;
+	display: none;
 }
