@@ -1,11 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="UTF-8">
-  <title></title>
+  <title>Enjoei - produto</title>
+  <script src="/resources/js/jquery.js"></script>
+  <script src="/resources/js/handlebars.js"></script>
+  <link rel="stylesheet" href="/resources/css/bootstrap.css">
 </head>
 <body>
-	<button>usar cupom</button>
+	<div class="container">
+		<header>
+			<img src="resources/img/logo.gif" alt="enjoei.com.br">
+		</header>
+
+
+	</div>
+
+	<script id="image-template" type="text/x-handlebars-template">
+		<imgWrapper class="col-xs-12">
+			<img src="{{productImage}}" alt="{{title}}" class="productImage">
+		</imgWrapper>
+	</script>
+
+	<script id="cupom-template" type="text/x-handlebars-template">
+		<div class="cuponWrapper">
+		<h3>cupons</h3>
+		  <input type="radio" id="1" name="cupom" value="não usar cupom"
+         checked>
+		  {{#each cupons}}
+		  	<div class="item">
+			<input type="radio" id="{{id}}" name="cupom" value="{{title}}"
+         checked>
+         	<span class="cupomValue">{{cupomValue}}</span>
+		  	</div>
+		  {{/each}}
+		</div>
+	</script>
+
+
+	<script id="checkoutInfo-template" type="text/x-handlebars-template">
+		<div class="checkoutInfoWrapper">
+			<h3>resumo</h3>
+			<div class="item">
+				<span class="itemName">
+					valor original
+				</span>
+				<span class="itemPrice">{{itemPrice}}</span>
+			</div>
+			<div class="item">
+				<span class="itemName">
+					cupom
+				</span>
+				<span class="cupomValue">-{{cupomValue}}</span>
+			</div>
+			<div class="item">
+				<span class="itemName">
+					frete
+				</span>
+				<span class="cupomValue">-{{shippingPrice}}</span>
+			</div>
+			<div class="item">
+				<span class="itemName">
+					total
+				</span>
+				<span class="totalPrice">-{{totalPrice}}</span>
+			</div>
+		</div>
+	</script>
+
+	<script id="buttons-template" type="text/x-handlebars-template">
+		<div class="buttonsWrapper">
+			<button class="cancelarBtn">cancelar</button>
+			<button class="comprarBtn">comprar</button>
+		</div>
+	</script>
+
+	<script id="buttons-template" type="text/x-handlebars-template">
+		<div class="modal">
+			<img src="{{cartUrl}}" alt="">
+			<span class="subject">{{subject}}</span>
+			<p class="message">{{message}}</p>
+		</div>
+	</script>
 </body>
 <script src="/controller.js" type="text/javascript"></script>
 </html>

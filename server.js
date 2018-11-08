@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(express.static(__dirname));
+app.use(express.static("resources"));
 
 
 app.get('/', function (req, res) {
@@ -41,7 +41,6 @@ app.get('/api/checkouts/:checkoutId', function (req, res) {
   if (parseInt(req.query.couponId, 10) === coupon.id) {
     checkout.totalPrice -= coupon.discount
   }
-console.log(req.query);
   res.json({ product: product, checkout: checkout })
 })
 

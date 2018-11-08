@@ -28,12 +28,40 @@ function httpCall(param){
 
 }
 
+
 httpCall();
 
-var button = document.getElementsByTagName("button")[0];
+
+var modal = document.getElementsByClassName("modal")[0],
+	subject = document.getElementsByClassName("subject")[0],
+	message = document.getElementsByClassName("message")[0],
+	button = document.getElementsByClassName("cupomItem")[0],
+	cancelarBtn = document.getElementsByClassName("cancelarBtn")[0],
+	comprarBtn = document.getElementsByClassName("comprarBtn")[0];
+
+const subjectCacelar = "compra cancelada",
+	  messageCancelar = "O pedido não foi enviado e você não será cobrado.",
+	  subjectComprar = "compra confirmada",
+	  messageComprar = "enviaremos atualizações sobre o pedido para seu e-mail";
+
+function showModal(data){
+	console.log(data);
+	subject.innerHTML = data.subject;
+	message.innerHTML = data.message;
+
+
+}
 
 button.addEventListener('click',function(){
 	httpCall("couponId=3")
+})
+
+cancelarBtn.addEventListener('click',function(){
+	showModal({subject: subjectCacelar, message:messageCancelar});
+})
+
+comprarBtn.addEventListener('click',function(){
+	showModal({subject: subjectComprar, message:messageComprar});
 })
 
 })();
