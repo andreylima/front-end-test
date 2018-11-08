@@ -1,0 +1,126 @@
+header
+{
+	height: 60px;
+	border-bottom: solid 1px #f4f2f0;
+	text-align: center;
+	padding-top: 15px
+}
+header img
+{
+	display: inline-block;
+	height: 30px;
+}
+.imgWrapper
+{
+	text-align: center;
+	padding-top: 33px;
+	padding-bottom: 37px;
+}
+.imgWrapper img 
+{
+	width: 125px;
+	display: inline-block;
+}
+h3
+{
+	font-family: Montserrat;
+	font-weight: 700;
+	color: #5b5855;
+	font-size: 16px;
+}
+.cuponWrapper .item {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	font-family: Montserrat;
+	font-weight: 400;
+	color: #5b5855;
+	font-size: 16px;
+}
+
+/* Hide the browser's default radio button */
+.cuponWrapper .item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: solid 1px #e9e7e5;
+}
+
+/* On mouse-over, add a grey background color */
+.cuponWrapper .item:hover input ~ .checkmark {
+    background-color: #fff;
+}
+
+/* When the radio button is checked, add a blue background */
+.cuponWrapper .item input:checked ~ .checkmark {
+    background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.cuponWrapper .item input:checked ~ .checkmark:after {
+    display: block;
+    background-color: #f77274;
+}
+
+/* Style the indicator (dot/circle) */
+.cuponWrapper .item .checkmark:after {
+ 	top: 4px;
+	left: 4px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: white;
+}
+.itemWrapper
+{
+	overflow: hidden;
+}
+.itemWrapper .item
+{
+	float: left;
+}
+.itemWrapper .cupomValue
+{
+	float: right;
+	font-family: Montserrat;
+	font-weight: 400;
+	color: #e85657;
+	font-size: 16px;
+}
+.checkoutInfoWrapper .item
+{
+	overflow: hidden;
+}
+.checkoutInfoWrapper .item .itemName
+{
+	float: left;
+	font-family: Montserrat;
+	font-weight: 400;
+	color: #e85657;
+	font-size: 16px;
+}

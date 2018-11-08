@@ -1,17 +1,25 @@
 $(function () {
 
-  var image-template = $("image-template").html(),
-      imageTemplateCompiled = Handlebars.compile(theTemplateScript),
+  var imageTemplate = $("#image-template").html(),
+      imageTemplateCompiled = Handlebars.compile(imageTemplate),
       imageTemplateContext = {},
-      cupom-template = $("cupom-template").html(),
-      cupomTemplateCompiled = Handlebars.compile(theTemplateScript),
+      imageTemplateCompiledHtml,
+      cupomTemplate = $("#cupom-template").html(),
+      cupomTemplateCompiled = Handlebars.compile(cupomTemplate),
       cupomTemplateContext = {},
-      checkoutInfo-template = $("checkoutInfo-template").html(),
-      checkoutInfoTemplateCompiled = Handlebars.compile(theTemplateScript),
-      checkoutTemplateContext = {},
-      buttons-template = $("buttons-template").html(),
-      buttonsTemplateCompiled = Handlebars.compile(theTemplateScript),
+      cupomTemplateCompiledHtml,
+      checkoutInfoTemplate = $("#checkoutInfo-template").html(),
+      checkoutInfoTemplateCompiled = Handlebars.compile(checkoutInfoTemplate),
+      checkoutInfoTemplateContext = {},
+      checkoutInfoTemplateCompiledHtml,
+      buttonsTemplate = $("#buttons-template").html(),
+      buttonsTemplateCompiled = Handlebars.compile(buttonsTemplate),
       buttonsTemplateContext = {},
+      modalTemplateCompiledHtml,
+      modalTemplate = $("#modal-template").html(),
+      modalTemplateCompiled = Handlebars.compile(modalTemplate),
+      modalTemplateContext = {},
+      modalTemplateCompiledHtml,
       data = {};
 
 function getCheckoutId () {
@@ -34,6 +42,8 @@ function httpCall(param){
     Http.onreadystatechange=(e)=>{
     if (Http.readyState == XMLHttpRequest.DONE ) {
       data = JSON.parse(Http.responseText);
+      console.log(data);
+      createContext(data);
     }
 
   }
@@ -46,11 +56,39 @@ function httpCall(param){
       "productImage" : data.product.image,
       "title"        : data.product.title
     }
+
+    cupomTemplateContext = {
+      "cupons" :  data.checkout.availableCoupons
+    }
+
+    checkoutInfoTemplateContext = {
+      "itemPrice" :  data.product.price,
+      "shippingPrice": data.checkout.shippingPrice,
+      "totalPrice": data.product.price+data.checkout.shippingPrice
+    }
+
+
+    compileHtm();
   }
 
-  // Pass our data to the template
-  var imageTemplateCompiledHtml = imageTemplateCompiled(imageTemplateContext);
+  function compileHtm(){
+    imageTemplateCompiledHtml = imageTemplateCompiled(imageTemplateContext);
+    cupomTemplateCompiledHtml = cupomTemplateCompiled(cupomTemplateContext);
+    checkoutInfoTemplateCompiledHtml =  checkoutInfoTemplateCompiled( checkoutInfoTemplateContext);
+    buttonsTemplateCompiledHtml =  buttonsTemplateCompiled();
+    modalTemplateCompiledHtml =  modalTemplateCompiled();
 
-  // Add the compiled html to the page
-  $('.container').html(imageTemplateCompiledHtml);
+    append();
+  }
+
+  function append(){
+    $('.container').append(imageTemplateCompiledHtml);
+    $('.container').append(cupomTemplateCompiledHtml);
+    $('.container').append(checkoutInfoTemplateCompiledHtml);
+    $('.container').append(buttonsTemplateCompiledHtml);
+    $('.container').append(modalTemplateCompiledHtml);
+  }
+  
+  httpCall();
 });
+
